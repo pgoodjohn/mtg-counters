@@ -33,24 +33,24 @@ const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
         <div className="flex flex-col items-center">
             <div className="flex">
                 <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 mx-2 rounded text-6xl"
                     onClick={decreaseCounter}
                 >
                     -
                 </button>
 
-                <p className="text-9xl px-8 font-bold font-mono">
+                <p className="text-9xl px-8 font-bold font-mono w-72 text-center">
                     {value}
                 </p>
                 <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 mx-2 rounded text-6xl"
                     onClick={increaseCounter}
                 >
                     +                
                 </button>
             </div>
             <p className="p-4 min-h-[56px] font-mono">
-                {changeAmount != 0 ? changeAmount : ""}
+                {changeAmount !== 0 ? changeAmount : ""}
             </p>
         </div>
     )
