@@ -3,14 +3,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
+import { Commander } from "./types";
+import CommanderView from "./commander";
 
 type ProfileProps = {
-    rotate?: boolean;
-};
-
-type Commander = {
-    name: string;
-    art_url: string;
+    rotate: boolean;
 };
 
 const commanders = [
@@ -40,21 +37,12 @@ const commanders = [
     },
 ]
 
-const Profile: React.FC<ProfileProps> = ({rotate}) => {
-    const getRandomCommander = () => {
-        const randomIndex = Math.floor(Math.random() * commanders.length);
-        return commanders[randomIndex];
-    };
-
+const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
     const [selectedCommander, setSelectedCommander] = useState<Commander | null>(null);
 
     const handleCommanderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setSelectedCommander(commanders.filter(commander => commander.art_url === event.target.value)[0])
     };
-
-    if (selectedCommander === null) {
-        setSelectedCommander(getRandomCommander());
-    }
 
     return (
         <div className="flex w-screen">
@@ -63,24 +51,23 @@ const Profile: React.FC<ProfileProps> = ({rotate}) => {
                     <DialogTrigger asChild>
                         <Button>Lands</Button>
                     </DialogTrigger>
-                        <DialogContent className={`${rotate ? 'transform rotate-180' :  ''}`}>
-                            <DialogHeader>Lands</DialogHeader>
-                            <DialogDescription>
-                                Keep track of your lands (WIP)
-                            </DialogDescription>
-                        </DialogContent>
+                    <DialogContent className={`${rotate ? 'transform rotate-180' : ''}`}>
+                        <DialogHeader>Lands</DialogHeader>
+                        <DialogDescription>
+                            Keep track of your lands (WIP)
+                        </DialogDescription>
+                    </DialogContent>
                 </Dialog>
             </div>
-            {selectedCommander &&
-                <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
-                    <Image src={selectedCommander.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" />
-                    <select onChange={handleCommanderChange} value={selectedCommander.art_url}>
-                        {commanders.map((commander, index) => (
-                            <option key={index} value={commander.art_url}>{commander.name}</option>
-                        ))}
-                    </select>
-                </div>
-            }
+            <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
+                {/* <Image src={selectedCommander?.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" /> */}
+                {/* <select onChange={handleCommanderChange} value={selectedCommander?.art_url}>
+                    {commanders.map((commander, index) => (
+                        <option key={index} value={commander.art_url}>{commander.name}</option>
+                    ))}
+                </select> */}
+                <CommanderView commanders={commanders} selectedCommander={selectedCommander} setSelectedCommander={setSelectedCommander} rotate={rotate} />
+            </div>
             <div className="w-1/3"></div>
         </div>
     )
