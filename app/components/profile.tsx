@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
 import { Commander } from "./types";
@@ -40,10 +39,6 @@ const commanders = [
 const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
     const [selectedCommander, setSelectedCommander] = useState<Commander | null>(null);
 
-    const handleCommanderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedCommander(commanders.filter(commander => commander.art_url === event.target.value)[0])
-    };
-
     return (
         <div className="flex w-screen">
             <div className="items-center w-1/3 p-4">
@@ -60,12 +55,6 @@ const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
                 </Dialog>
             </div>
             <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
-                {/* <Image src={selectedCommander?.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" /> */}
-                {/* <select onChange={handleCommanderChange} value={selectedCommander?.art_url}>
-                    {commanders.map((commander, index) => (
-                        <option key={index} value={commander.art_url}>{commander.name}</option>
-                    ))}
-                </select> */}
                 <CommanderView commanders={commanders} selectedCommander={selectedCommander} setSelectedCommander={setSelectedCommander} rotate={rotate} />
             </div>
             <div className="w-1/3"></div>

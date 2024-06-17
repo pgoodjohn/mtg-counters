@@ -13,20 +13,17 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils"
 import {
     Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 
 import {
     Commander
 } from "./types";
 import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import CommanderSearch from "./commanderSearch";
 
 
 type CommanderViewProps = {
@@ -39,13 +36,16 @@ type CommanderViewProps = {
 const CommanderView: React.FC<CommanderViewProps> = ({ commanders, selectedCommander, setSelectedCommander, rotate, }) => {
     return (
         <div className="pt-4">
-            {selectedCommander && 
-                <Image src={selectedCommander?.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" />
+            {selectedCommander &&
+                <div>
+                    <Image src={selectedCommander?.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" />
+                    <p>{selectedCommander.name}</p>
+                </div>
             }
-            {selectedCommander == null && 
-                    <div className="text-2xl">
-                        Select a Commander
-                    </div>
+            {selectedCommander == null &&
+                <div className="text-2xl">
+                    Select a Commander
+                </div>
             }
             <CommanderSelector commanders={commanders} selectedCommander={selectedCommander} setSelectedCommander={setSelectedCommander} rotate={rotate} />
         </div>
@@ -73,21 +73,37 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                     <DialogDescription>
                         Choose your commander
                     </DialogDescription>
+                    {selectedCommander &&
+                        <Card key={selectedCommander.name} className="mb-2">
+                            <DialogClose asChild>
+                                <Button variant="ghost" className="h-[100px] w-full flex">
+                                    <div className="w-[100px] mr-2">
+                                        <Image src={selectedCommander.art_url} alt={selectedCommander.name} height="626" width="274" />
+                                    </div>
+                                    <div className="flex items-center justify-center">
+                                        <p className="p-4">{selectedCommander.name}</p>
+                                    </div>
+                                    <div className="flex-grow"></div>
+                                </Button>
+                            </DialogClose>
+                        </Card>
+                    }
+                    <CommanderSearch handleCommanderSelected={handleCommanderSelected} />
                     <ScrollArea className="h-[700px] border-none p-6">
                         {commanders.map((commander) => (
                             <Card key={commander.name} className="mb-2">
                                 <DialogClose asChild>
                                     <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[100px] w-full flex">
-                                            <div className="w-[100px] mr-2">
-                                                <Image src={commander.art_url} alt={commander.name} height="626" width="274"/>
-                                            </div>
-                                            <div className="flex items-center justify-center">
+                                        <div className="w-[100px] mr-2">
+                                            <Image src={commander.art_url} alt={commander.name} height="626" width="274" />
+                                        </div>
+                                        <div className="flex items-center justify-center">
                                             <p className="p-4">{commander.name}</p>
-                                            </div>
-                                            <div className="flex-grow"></div>
+                                        </div>
+                                        <div className="flex-grow"></div>
                                     </Button>
                                 </DialogClose>
-                            </Card>      
+                            </Card>
                         ))}
                     </ScrollArea>
                 </DialogHeader>
