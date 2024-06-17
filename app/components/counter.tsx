@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Profile from "./profile";
 
 type CounterProps = {
     value: number;
     setValue: (value: number) => void;
+    rotate?: boolean;
 };
 
-const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
+const Counter: React.FC<CounterProps> = ({ value, setValue, rotate }) => {
     const [changeAmount, setChangeAmount] = useState(0);
 
     const changeCounter = (amount: number) => {
@@ -25,7 +27,9 @@ const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
     }, [changeAmount]);
 
     return (
-        <div className="flex flex-col items-center">
+        <div className={`flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
+            <Profile />
+            <div className="flex-grow" />
             <div className="flex">
                 <div className="flex flex-col">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t" onClick={() => changeCounter(-2)}>
