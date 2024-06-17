@@ -1,5 +1,5 @@
 "use client";
-import {React, useState} from "react";
+import React, {useState} from "react";
 import Counter from "./counter";
 
 export default function CounterContainer() {
