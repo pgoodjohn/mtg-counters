@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { get } from "http";
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
+import { Button } from "../../components/ui/button";
 
 type ProfileProps = {
 };
@@ -55,9 +56,24 @@ const Profile: React.FC<ProfileProps> = () => {
     }
 
     return (
-        <>
+        <div className="flex w-screen">
+            <div className="items-center w-1/3 p-4">
+                <Dialog>
+                    <DialogTrigger>
+                        <Button>
+                            Lands
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogHeader>Lands</DialogHeader>
+                        <DialogDescription>
+                            Keep track of your lands (WIP)
+                        </DialogDescription>
+                    </DialogContent>
+                </Dialog>
+            </div>
             {selectedCommander &&
-                <div className="text-center">
+                <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
                     <Image src={selectedCommander.art_url} alt="Player Avatar" width={350} height={150} sizes="(max-width: 350px), (max-height: 150px)" />
                     <select onChange={handleCommanderChange} value={selectedCommander.art_url}>
                         {commanders.map((commander, index) => (
@@ -66,7 +82,8 @@ const Profile: React.FC<ProfileProps> = () => {
                     </select>
                 </div>
             }
-        </>
+            <div className="w-1/3"></div>
+        </div>
     )
 };
 
