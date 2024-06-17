@@ -28,7 +28,7 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate }) => {
 
     return (
         <div className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
-            <Profile />
+            <Profile rotate={rotate}/>
             <div className="flex-grow" />
             <div className="flex">
                 <div className="flex flex-col">

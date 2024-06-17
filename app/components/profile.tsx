@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
+import { DialogOverlay } from "@radix-ui/react-dialog";
 
 type ProfileProps = {
+    rotate?: boolean;
 };
 
 type Commander = {
@@ -39,7 +41,7 @@ const commanders = [
     },
 ]
 
-const Profile: React.FC<ProfileProps> = () => {
+const Profile: React.FC<ProfileProps> = ({rotate}) => {
     const getRandomCommander = () => {
         const randomIndex = Math.floor(Math.random() * commanders.length);
         return commanders[randomIndex];
@@ -59,17 +61,15 @@ const Profile: React.FC<ProfileProps> = () => {
         <div className="flex w-screen">
             <div className="items-center w-1/3 p-4">
                 <Dialog>
-                    <DialogTrigger>
-                        <Button>
-                            Lands
-                        </Button>
+                    <DialogTrigger asChild>
+                        <Button>Lands</Button>
                     </DialogTrigger>
-                    <DialogContent>
-                        <DialogHeader>Lands</DialogHeader>
-                        <DialogDescription>
-                            Keep track of your lands (WIP)
-                        </DialogDescription>
-                    </DialogContent>
+                        <DialogContent className={`${rotate ? 'transform rotate-180' :  ''}`}>
+                            <DialogHeader>Lands</DialogHeader>
+                            <DialogDescription>
+                                Keep track of your lands (WIP)
+                            </DialogDescription>
+                        </DialogContent>
                 </Dialog>
             </div>
             {selectedCommander &&
