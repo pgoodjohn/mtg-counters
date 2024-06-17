@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
 import { Button } from "../../components/ui/button";
-import { DialogOverlay } from "@radix-ui/react-dialog";
 
 type ProfileProps = {
     rotate?: boolean;
@@ -74,7 +73,7 @@ const Profile: React.FC<ProfileProps> = ({rotate}) => {
             </div>
             {selectedCommander &&
                 <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
-                    <Image src={selectedCommander.art_url} alt="Player Avatar" width={350} height={150} sizes="(max-width: 350px), (max-height: 150px)" />
+                    <Image src={selectedCommander.art_url} alt="Player Avatar" height={150} width={350} className="w-auto" />
                     <select onChange={handleCommanderChange} value={selectedCommander.art_url}>
                         {commanders.map((commander, index) => (
                             <option key={index} value={commander.art_url}>{commander.name}</option>

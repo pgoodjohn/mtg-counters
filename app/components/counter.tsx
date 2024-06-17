@@ -30,7 +30,12 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate }) => {
         <div className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
             <Profile rotate={rotate}/>
             <div className="flex-grow" />
-            <div className="flex">
+            <div className="px-8 font-mono text-2xl">
+                <p className="h-[56px]">
+                    {changeAmount !== 0 ? changeAmount : ""}
+                </p>
+            </div>
+            <div className="flex pb-12">
                 <div className="flex flex-col">
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t" onClick={() => changeCounter(-2)}>
                         -2
@@ -76,9 +81,6 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate }) => {
                     </button>
                 </div>
             </div>
-            <p className="p-4 min-h-[56px] font-mono">
-                {changeAmount !== 0 ? changeAmount : ""}
-            </p>
         </div>
     )
 }
