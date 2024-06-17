@@ -95,7 +95,7 @@ const CommanderSearch: React.FC<CommanderSearchProps> = ({ handleCommanderSelect
                 {searchResults.length > 0 &&
                     <ScrollArea className='h-[700px]'>
                         {searchResults.map((result) => (
-                            <CommanderSearchResultSelector name={result} handleCommanderSelected={handleCommanderSelected}/>
+                            <CommanderSearchResultSelector key={result} name={result} handleCommanderSelected={handleCommanderSelected}/>
                         ))}
                     </ScrollArea>
                 }
@@ -131,7 +131,7 @@ const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ n
     }
 
     return (
-        <div>
+        <div key={name}>
             {card && commander &&
             <Card key={card.name} className="mb-2">
                 <DialogClose asChild>
