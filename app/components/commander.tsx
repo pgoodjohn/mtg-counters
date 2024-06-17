@@ -75,24 +75,19 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                     </DialogDescription>
                     <ScrollArea className="h-[700px] border-none p-6">
                         {commanders.map((commander) => (
-                            <Card key={commander.name} className="my-3">
+                            <Card key={commander.name} className="mb-2">
                                 <DialogClose asChild>
-                                    <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[125px] w-full">
-                                        <div className="flex">
-                                            <div className="w-[100px]">
+                                    <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[100px] w-full flex">
+                                            <div className="w-[100px] mr-2">
                                                 <Image src={commander.art_url} alt={commander.name} height="626" width="274"/>
                                             </div>
+                                            <div className="flex items-center justify-center">
                                             <p className="p-4">{commander.name}</p>
-                                        </div>
+                                            </div>
+                                            <div className="flex-grow"></div>
                                     </Button>
                                 </DialogClose>
                             </Card>      
-                            // <Button variant={"outline"}>
-                            //     <div className="w-[100px]">
-                            //         <Image src={commander.art_url} alt={commander.name} height="626" width="274" />
-                            //     </div>
-                            //     {commander.name}
-                            // </Button>
                         ))}
                     </ScrollArea>
                 </DialogHeader>

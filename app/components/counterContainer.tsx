@@ -20,9 +20,7 @@ export default function CounterContainer() {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-between">
-            {/* <div className="transform rotate-180 min-h-[1/2]vh p-4"> */}
             <Counter value={counterOne} setValue={setCounterOne} rotate={true}/>
-            {/* </div> */}
             <div className="flex border-y border-gray-300 min-w-full justify-center py-2 px-8">
                 <select value={initialState} onChange={selectNewInitialState} className="rounded p-1 border-gray-400">
                     <option value={20}>20</option>
