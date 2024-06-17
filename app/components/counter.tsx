@@ -9,15 +9,10 @@ type CounterProps = {
 const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
     const [changeAmount, setChangeAmount] = useState(0);
 
-    const decreaseCounter = () => {
-        setValue(value - 1);
-        setChangeAmount(changeAmount - 1);
-    };
-
-    const increaseCounter = () => {
-        setValue(value + 1);
-        setChangeAmount(changeAmount + 1);
-    };
+    const changeCounter = (amount: number) => {
+        setValue(value + amount);
+        setChangeAmount(changeAmount + amount);
+    }
 
     useEffect(() => {
         const timer1 = setTimeout(() => {
@@ -32,9 +27,23 @@ const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
     return (
         <div className="flex flex-col items-center">
             <div className="flex">
+                <div className="flex flex-col">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t" onClick={() => changeCounter(-2)}>
+                        -2
+                    </button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4"  onClick={() => changeCounter(-3)}>
+                        -3
+                    </button> 
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4" onClick={() => changeCounter(-5)} >
+                        -5
+                    </button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-b"  onClick={() => changeCounter(-10)}>
+                        -10
+                    </button>
+                </div>
                 <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 mx-2 rounded text-6xl"
-                    onClick={decreaseCounter}
+                    onClick={() => changeCounter(-1)}
                 >
                     -
                 </button>
@@ -44,10 +53,24 @@ const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
                 </p>
                 <button
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-12 mx-2 rounded text-6xl"
-                    onClick={increaseCounter}
+                    onClick={() => changeCounter(1)}
                 >
                     +                
                 </button>
+                <div className="flex flex-col">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t"  onClick={() => changeCounter(2)}>
+                        +2
+                    </button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4"  onClick={() => changeCounter(3)}>
+                        +3
+                    </button> 
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4" onClick={() => changeCounter(5)}>
+                        +5
+                    </button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-b"  onClick={() => changeCounter(10)}>
+                        +10
+                    </button>
+                </div>
             </div>
             <p className="p-4 min-h-[56px] font-mono">
                 {changeAmount !== 0 ? changeAmount : ""}
