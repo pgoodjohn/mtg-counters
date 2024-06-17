@@ -32,7 +32,7 @@ export default function CounterContainer() {
                 </select>
                 <button className="mx-2 p-1 px-2 rounded bg-red-400 hover:bg-red-500 text-white" onClick={resetCounters}>Reset</button>
             </div>
-            <Counter value={counterTwo} setValue={setCounterTwo} />
+            <Counter value={counterTwo} setValue={setCounterTwo} rotate={false}/>
         </div>
     );
 }
