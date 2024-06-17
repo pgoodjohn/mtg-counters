@@ -1,6 +1,7 @@
 "use client";
 import React, {useState} from "react";
 import Counter from "./counter";
+import SettingsDialog from "./settingsDialog";
 
 export default function CounterContainer() {
     const [counterOne, setCounterOne] = useState(20);
@@ -22,12 +23,8 @@ export default function CounterContainer() {
         <div className="min-h-screen flex flex-col items-center justify-between">
             <Counter value={counterOne} setValue={setCounterOne} rotate={true}/>
             <div className="flex border-y border-gray-300 min-w-full justify-center py-2 px-8">
-                <select value={initialState} onChange={selectNewInitialState} className="rounded p-1 border-gray-400">
-                    <option value={20}>20</option>
-                    <option value={25}>25</option>
-                    <option value={30}>30</option>
-                    <option value={40}>40</option>
-                </select>
+                <SettingsDialog setInitialValue={selectNewInitialState} initialState={initialState}/>
+                <div className="flex-grow"></div>
                 <button className="mx-2 p-1 px-2 rounded bg-red-400 hover:bg-red-500 text-white" onClick={resetCounters}>Reset</button>
             </div>
             <Counter value={counterTwo} setValue={setCounterTwo} rotate={false}/>
