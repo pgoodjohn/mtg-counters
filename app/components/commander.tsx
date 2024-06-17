@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
     Dialog,
     DialogContent,
@@ -22,7 +22,6 @@ import {
     Commander
 } from "./types";
 import Image from "next/image";
-import { Input } from "@/components/ui/input";
 import CommanderSearch from "./commanderSearch";
 
 
@@ -73,6 +72,7 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                     <DialogDescription>
                         Choose your commander
                     </DialogDescription>
+                </DialogHeader>
                     {selectedCommander &&
                         <Card key={selectedCommander.name} className="mb-2">
                             <DialogClose asChild>
@@ -89,7 +89,7 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                         </Card>
                     }
                     <CommanderSearch handleCommanderSelected={handleCommanderSelected} />
-                    <ScrollArea className="h-[700px] border-none p-6">
+                    <ScrollArea className="h-[400px] border-none p-6">
                         {commanders.map((commander) => (
                             <Card key={commander.name} className="mb-2">
                                 <DialogClose asChild>
@@ -106,7 +106,9 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                             </Card>
                         ))}
                     </ScrollArea>
-                </DialogHeader>
+                <DialogClose asChild>
+                    <Button>Close</Button>
+                </DialogClose>
             </DialogContent>
         </Dialog >
     )

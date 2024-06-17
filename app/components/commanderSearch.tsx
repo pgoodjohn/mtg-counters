@@ -50,7 +50,7 @@ const CommanderSearch: React.FC<CommanderSearchProps> = ({ handleCommanderSelect
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
+        console.debug("Searching for: ", values);
         setSearchResults([]);
         const results = await Scry.Cards.autoCompleteName(values.cardName);
         setSearchResults(results.map((result) => {
@@ -99,6 +99,9 @@ const CommanderSearch: React.FC<CommanderSearchProps> = ({ handleCommanderSelect
                         ))}
                     </ScrollArea>
                 }
+                <DialogClose asChild>
+                    <Button>Close</Button>
+                </DialogClose>
             </DialogContent>
         </Dialog>
     )
@@ -116,7 +119,7 @@ const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ n
 
     async function loadCard(name: string) {
         const card = await Scry.Cards.byName(name);
-        console.log(card);
+        console.debug(card);
         setCard(card);
 
         let commander: Commander = {
