@@ -5,10 +5,10 @@ import Profile from "./profile";
 type CounterProps = {
     value: number;
     setValue: (value: number) => void;
-    rotate?: boolean;
+    rotate: boolean;
 };
 
-const Counter: React.FC<CounterProps> = ({ value, setValue, rotate }) => {
+const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) => {
     const [changeAmount, setChangeAmount] = useState(0);
 
     const changeCounter = (amount: number) => {
