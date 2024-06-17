@@ -1,9 +1,12 @@
 "use client";
-import { kill } from "process";
 import React, { useState, useEffect } from "react";
 
-export default function Counter({value, setValue}) {
+type CounterProps = {
+    value: number;
+    setValue: (value: number) => void;
+};
 
+const Counter: React.FC<CounterProps> = ({ value, setValue }) => {
     const [changeAmount, setChangeAmount] = useState(0);
 
     const decreaseCounter = () => {
@@ -52,3 +55,5 @@ export default function Counter({value, setValue}) {
         </div>
     )
 }
+
+export default Counter;
