@@ -93,7 +93,7 @@ const CommanderSearch: React.FC<CommanderSearchProps> = ({ handleCommanderSelect
                     </form>
                 </Form>
                 {searchResults.length > 0 &&
-                    <ScrollArea className='h-[700px]'>
+                    <ScrollArea className='h-[400px]'>
                         {searchResults.map((result) => (
                             <CommanderSearchResultSelector key={result} name={result} handleCommanderSelected={handleCommanderSelected}/>
                         ))}

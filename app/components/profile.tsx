@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogDescription } from "../../components/ui/dialog";
-import { Button } from "../../components/ui/button";
 import { Commander } from "./types";
 import CommanderView from "./commander";
+import Lands from "./lands";
 
 type ProfileProps = {
     rotate: boolean;
@@ -42,18 +41,8 @@ const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
     return (
         <div className="flex w-screen">
             <div className="items-center w-1/3 p-4">
-                <Dialog>
-                    <DialogTrigger asChild>
-                        <Button>Lands</Button>
-                    </DialogTrigger>
-                    <DialogContent className={`${rotate ? 'transform rotate-180' : ''}`}>
-                        <DialogHeader>Lands</DialogHeader>
-                        <DialogDescription>
-                            Keep track of your lands (WIP)
-                        </DialogDescription>
-                    </DialogContent>
-                </Dialog>
-            </div>
+                <Lands rotate={rotate}/>
+           </div>
             <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
                 <CommanderView commanders={commanders} selectedCommander={selectedCommander} setSelectedCommander={setSelectedCommander} rotate={rotate} />
             </div>
