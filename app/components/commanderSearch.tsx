@@ -29,6 +29,7 @@ import Image from "next/image";
 import {
     Card,
 } from "@/components/ui/card"
+import CommanderSelectButton from './commanderSelectButton';
 
 type CommanderSearchProps = {
     handleCommanderSelected: (commander: Commander) => void;
@@ -138,17 +139,7 @@ const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ n
             {card && commander &&
             <Card key={card.name} className="mb-2">
                 <DialogClose asChild>
-                    <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[100px] w-full flex">
-                        <div className="w-[100px] mr-2">
-                            {card.image_uris &&
-                             <Image src={card.image_uris.art_crop} alt={card.name} height="626" width="274" />
-                            }
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <p className="p-4">{card.name}</p>
-                        </div>
-                        <div className="flex-grow"></div>
-                    </Button>
+                    <CommanderSelectButton card={card} commander={commander} handleCommanderSelected={handleCommanderSelected}/>
                 </DialogClose>
             </Card>
             }
