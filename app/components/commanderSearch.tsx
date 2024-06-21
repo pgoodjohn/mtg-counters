@@ -29,7 +29,7 @@ import Image from "next/image";
 import {
     Card,
 } from "@/components/ui/card"
-import CommanderSelectButton from './commanderSelectButton';
+import CommanderSearchResultSelector from './commanderSearchResultSelector';
 
 type CommanderSearchProps = {
     handleCommanderSelected: (commander: Commander) => void;
@@ -105,45 +105,6 @@ const CommanderSearch: React.FC<CommanderSearchProps> = ({ handleCommanderSelect
                 </DialogClose>
             </DialogContent>
         </Dialog>
-    )
-}
-
-type CommanderSearchResultProps = {
-    name: string;
-    handleCommanderSelected: (commander: Commander) => void;
-}
-
-const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ name, handleCommanderSelected }) => {
-
-    const [card, setCard] = React.useState<Scry.Card | null>(null);
-    const [commander, setCommander] = useState<Commander | null>(null);
-
-    async function loadCard(name: string) {
-        const card = await Scry.Cards.byName(name);
-        console.debug(card);
-        setCard(card);
-
-        let commander: Commander = {
-            name: card.name,
-            art_url: card.image_uris?.art_crop || "",
-        };
-        setCommander(commander);
-    }
-
-    if (card === null) {
-        loadCard(name);
-    }
-
-    return (
-        <div key={name}>
-            {card && commander &&
-            <Card key={card.name} className="mb-2">
-                <DialogClose className="w-full">
-                    <CommanderSelectButton card={card} commander={commander} handleCommanderSelected={handleCommanderSelected}/>
-                </DialogClose>
-            </Card>
-            }
-        </div>
     )
 }
 

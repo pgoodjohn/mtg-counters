@@ -23,6 +23,7 @@ import {
 } from "./types";
 import Image from "next/image";
 import CommanderSearch from "./commanderSearch";
+import CommanderSearchResultSelector from "./commanderSearchResultSelector";
 
 
 type CommanderViewProps = {
@@ -91,19 +92,7 @@ const CommanderSelector: React.FC<CommanderViewProps> = ({ commanders, selectedC
                     <CommanderSearch handleCommanderSelected={handleCommanderSelected} />
                     <ScrollArea className="h-[400px] border-none p-6">
                         {commanders.map((commander) => (
-                            <Card key={commander.name} className="mb-2">
-                                <DialogClose asChild>
-                                    <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[100px] w-full flex">
-                                        <div className="w-[100px] mr-2">
-                                            <Image src={commander.art_url} alt={commander.name} height="626" width="274" />
-                                        </div>
-                                        <div className="flex items-center justify-center">
-                                            <p className="p-4">{commander.name}</p>
-                                        </div>
-                                        <div className="flex-grow"></div>
-                                    </Button>
-                                </DialogClose>
-                            </Card>
+                            <CommanderSearchResultSelector key={commander.name} name={commander.name} handleCommanderSelected={handleCommanderSelected} />
                         ))}
                     </ScrollArea>
                 <DialogClose asChild>
