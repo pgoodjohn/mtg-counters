@@ -138,7 +138,7 @@ const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ n
         <div key={name}>
             {card && commander &&
             <Card key={card.name} className="mb-2">
-                <DialogClose asChild>
+                <DialogClose className="w-full">
                     <CommanderSelectButton card={card} commander={commander} handleCommanderSelected={handleCommanderSelected}/>
                 </DialogClose>
             </Card>

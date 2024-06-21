@@ -19,26 +19,27 @@ const CommanderSelectButton: React.FC<CommanderSelectButtonProps> = ({ card, com
 
     return (
         <Button variant="ghost" onClick={() => handleCommanderSelected(commander)} className="h-[100px] w-full flex">
-            <HoverCard>
-                <HoverCardTrigger>
-                    <div className="w-[100px] mr-2">
+            <div className="w-[100px] mr-2">
+                <HoverCard>
+                    <HoverCardTrigger>
                         {card.image_uris &&
                             <Image src={card.image_uris.art_crop} alt={card.name} height="626" width="274" />
                         }
-                    </div>
-                    <div className="flex items-center justify-center">
-                        <p className="p-4">{card.name}</p>
-                    </div>
-                    <div className="flex-grow"></div>
-                </HoverCardTrigger>
-                <HoverCardContent className="flex w-auto">
-                    {card.image_uris &&
-                        <Image src={card.image_uris.large} alt={card.name} height="626" width="274" />
-                    }
-                    <p className="max-w-[200px] p-4">{card.oracle_text}</p>
-                </HoverCardContent>
-            </HoverCard>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="flex w-auto max-w-[600px]">
+                        {card.image_uris &&
+                            <Image src={card.image_uris.large} alt={card.name} height="626" width="274" />
+                        }
+                        <p className="p-4 text-wrap text-left">{card.oracle_text}</p>
+                    </HoverCardContent>
+                </HoverCard>
+            </div>
+            <div className="flex items-center justify-center">
+                <p className="p-4">{card.name}</p>
+            </div>
+            <div className="flex-grow"></div>
         </Button>
+
     )
 };
 
