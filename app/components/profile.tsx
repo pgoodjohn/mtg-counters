@@ -41,7 +41,7 @@ const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
     return (
         <div className="flex w-screen">
             <div className="items-center w-1/3 p-4">
-                <Lands rotate={rotate}/>
+                <Lands colors={selectedCommander?.colors} rotate={rotate}/>
            </div>
             <div className="flex flex-col items-center text-center w-1/3 min-w-[350px]">
                 <CommanderView commanders={commanders} selectedCommander={selectedCommander} setSelectedCommander={setSelectedCommander} rotate={rotate} />

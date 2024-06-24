@@ -1,8 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import {
-    DialogClose,
-} from "@/components/ui/dialog";
 import { Commander } from './types';
 import * as Scry from "scryfall-sdk";
 import {
@@ -28,6 +25,7 @@ const CommanderSearchResultSelector: React.FC<CommanderSearchResultProps> = ({ n
         let commander: Commander = {
             name: card.name,
             art_url: card.image_uris?.art_crop || "",
+            colors: card.colors?? [],
         };
         setCommander(commander);
     }
