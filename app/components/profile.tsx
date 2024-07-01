@@ -33,6 +33,14 @@ const commanders = [
         "name": "Sauron, the Lidless Eye",
         "art_url": "https://cards.scryfall.io/art_crop/front/d/8/d82a4c78-d2fc-425a-8d0e-2e64509a08f1.jpg?1715720382",
     },
+    {
+        "name": "Dogmeat, Ever Loyal",
+        "art_url": "",
+    },
+    {
+        "name": "The Wise Mothman",
+        "art_url": "",
+    }
 ]
 
 const Profile: React.FC<ProfileProps> = ({ rotate = false }) => {
