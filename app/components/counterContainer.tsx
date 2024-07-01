@@ -2,22 +2,21 @@
 import React, {useState} from "react";
 import Counter from "./counter";
 import SettingsDialog from "./settingsDialog";
-import Confetti from 'react-confetti';
 
 export default function CounterContainer() {
-    const [counterOne, setCounterOne] = useState(20);
-    const [counterTwo, setCounterTwo] = useState(20);
-    const [initialState, setInitialState] = useState(20);
+    const [counterOne, setCounterOne] = useState(40);
+    const [counterTwo, setCounterTwo] = useState(40);
+    const [initialState, setInitialState] = useState("40");
 
     const resetCounters = () => {
-        setCounterOne(initialState);
-        setCounterTwo(initialState);
+        setCounterOne(parseInt(initialState));
+        setCounterTwo(parseInt(initialState));
     };
 
-    const selectNewInitialState = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setInitialState(Number(e.target.value));
-        setCounterOne(Number(e.target.value));
-        setCounterTwo(Number(e.target.value));
+    const selectNewInitialState = (newValue: string) => {
+        setInitialState(newValue);
+        setCounterOne(parseInt(newValue));
+        setCounterTwo(parseInt(newValue));
     };
 
     return (

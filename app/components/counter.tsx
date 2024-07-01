@@ -47,8 +47,6 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false, oppo
     return (
         <div ref={divRef} className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
             {opponentValue <= 0 &&
-                // <Confetti className="" width={dimensions.width} height={dimensions.height} />
-                // <Confetti />
                 <Confetti
                     width={window.innerWidth}
                     height={window.innerHeight}
