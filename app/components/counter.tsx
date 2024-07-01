@@ -1,14 +1,16 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Profile from "./profile";
+import Confetti from 'react-confetti'
 
 type CounterProps = {
     value: number;
     setValue: (value: number) => void;
     rotate: boolean;
+    opponentValue: number;
 };
 
-const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) => {
+const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false, opponentValue }) => {
     const [changeAmount, setChangeAmount] = useState(0);
 
     const changeCounter = (amount: number) => {
@@ -19,7 +21,7 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) =>
     useEffect(() => {
         const timer1 = setTimeout(() => {
             setChangeAmount(0);
-        }, 5000);
+        }, 7000);
 
         return () => {
             clearTimeout(timer1);
@@ -28,6 +30,9 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) =>
 
     return (
         <div className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
+            {opponentValue <= 0 &&
+                <Confetti />
+            }
             <Profile rotate={rotate}/>
             <div className="flex-grow" />
             <div className="px-8 font-mono text-2xl">

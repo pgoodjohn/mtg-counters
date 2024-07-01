@@ -24,6 +24,7 @@
     "mana-font": "^1.15.9",
     "next": "14.2.4",
     "react": "^18",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18",
     "react-hook-form": "^7.52.0",
     "scryfall-sdk": "^4.2.2",
