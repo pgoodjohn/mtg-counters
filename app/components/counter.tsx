@@ -35,18 +35,15 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) =>
                     {changeAmount !== 0 ? changeAmount : ""}
                 </p>
             </div>
-            <div className="flex pb-12">
+            <div className="flex pb-8">
                 <div className="flex flex-col">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t" onClick={() => changeCounter(-2)}>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 h-1/3 rounded-t" onClick={() => changeCounter(-2)}>
                         -2
                     </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4"  onClick={() => changeCounter(-3)}>
-                        -3
-                    </button> 
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4" onClick={() => changeCounter(-5)} >
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 h-1/3"  onClick={() => changeCounter(-5)}>
                         -5
-                    </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-b"  onClick={() => changeCounter(-10)}>
+                    </button> 
+                    <button className="bg-blue-500 border-blue-500 hover:bg-blue-700 text-white font-bold px-4 h-1/3 rounded-b"  onClick={() => changeCounter(-10)}>
                         -10
                     </button>
                 </div>
@@ -57,7 +54,7 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) =>
                     -
                 </button>
 
-                <p className="text-9xl px-8 font-bold font-mono w-72 text-center">
+                <p className="text-10xl px-8 font-bold font-mono w-72 text-center">
                     {value}
                 </p>
                 <button
@@ -67,16 +64,13 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false }) =>
                     +                
                 </button>
                 <div className="flex flex-col">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-t"  onClick={() => changeCounter(2)}>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-3 h-1/3 rounded-t"  onClick={() => changeCounter(2)}>
                         +2
                     </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4"  onClick={() => changeCounter(3)}>
-                        +3
-                    </button> 
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4" onClick={() => changeCounter(5)}>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 h-1/3"  onClick={() => changeCounter(5)}>
                         +5
-                    </button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 h-1/4 rounded-b"  onClick={() => changeCounter(10)}>
+                    </button> 
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 h-1/3 rounded-b"  onClick={() => changeCounter(10)}>
                         +10
                     </button>
                 </div>

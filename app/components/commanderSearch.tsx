@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Dialog,
     DialogContent,
@@ -25,10 +25,6 @@ import {
 } from "@/components/ui/form"
 import { Commander } from './types';
 import * as Scry from "scryfall-sdk";
-import Image from "next/image";
-import {
-    Card,
-} from "@/components/ui/card"
 import CommanderSearchResultSelector from './commanderSearchResultSelector';
 
 type CommanderSearchProps = {
