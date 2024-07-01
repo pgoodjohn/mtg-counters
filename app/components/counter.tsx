@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Profile from "./profile";
 import Confetti from 'react-confetti'
 
@@ -10,8 +10,24 @@ type CounterProps = {
     opponentValue: number;
 };
 
+interface Dimensions {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+  }
+
 const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false, opponentValue }) => {
     const [changeAmount, setChangeAmount] = useState(0);
+    const divRef = useRef<HTMLDivElement>(null);
+    const [dimensions, setDimensions] = useState<Dimensions>({ width: 0, height: 0, x: 0, y: 0 });
+
+    useEffect(() => {
+        if (divRef.current) {
+            const { width, height, x, y } = divRef.current.getBoundingClientRect();
+            setDimensions({ width, height, x, y });
+        }
+    }, [divRef]);
 
     const changeCounter = (amount: number) => {
         setValue(value + amount);
@@ -29,9 +45,20 @@ const Counter: React.FC<CounterProps> = ({ value, setValue, rotate = false, oppo
     }, [changeAmount]);
 
     return (
-        <div className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
+        <div ref={divRef} className={`w-screen flex flex-col items-center flex-grow ${rotate ? 'transform rotate-180' :  ''}`}>
             {opponentValue <= 0 &&
-                <Confetti />
+                // <Confetti className="" width={dimensions.width} height={dimensions.height} />
+                // <Confetti />
+                <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    confettiSource={{
+                        x: dimensions.x,
+                        y: dimensions.y,
+                        w: dimensions.width,
+                        h: 0 // Set height to 0 to make confetti come from the top of the div only
+                    }}
+                />
             }
             <Profile rotate={rotate}/>
             <div className="flex-grow" />
