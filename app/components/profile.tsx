@@ -18,7 +18,8 @@ const getFavouriteCommanders = (): Commander[] => {
     const dogmeat: Commander = {name: "Dogmeat, Ever Loyal", art_url: "", colors: []};
     const mothman: Commander = {name: "The Wise Mothman", art_url: "", colors: []};
     const ezio: Commander = {name: "Ezio Auditore da Firenze", art_url: "", colors: []};
-    return [ezio, dogmeat, mothman, omo, olivia, yuma, doctor, aragorn, sauron];
+    const rin: Commander = {name: "Rin and Seri, Inseparable", art_url: "", colors: []};
+    return [rin, ezio, dogmeat, mothman, omo, olivia, yuma, doctor, aragorn, sauron];
 }
 
 const commanders = getFavouriteCommanders();
