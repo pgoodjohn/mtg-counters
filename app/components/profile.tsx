@@ -21,7 +21,9 @@ const getFavouriteCommanders = (): Commander[] => {
     const rin: Commander = {name: "Rin and Seri, Inseparable", art_url: "", colors: []};
     const bello: Commander = {name: "Bello, Bard of the Brambles", art_url: "", colors: []};
     const miss: Commander = {name: "Ms. Bumbleflower", art_url: "", colors: []};
-    return [bello, miss, rin, ezio, dogmeat, mothman, omo, olivia, yuma, doctor, aragorn, sauron];
+    const hazel:  Commander = {name: "Hazel of the Rootbloom", art_url: "", colors: []};
+    const zinnia: Commander = {name: "Zinnia, Valley's Voice", art_url: "", colors: []};
+    return [hazel, zinnia, bello, miss, rin, ezio, dogmeat, mothman, omo, olivia, yuma, doctor, aragorn, sauron];
 }
 
 const commanders = getFavouriteCommanders();
